@@ -1,0 +1,45 @@
+<div class="col">
+    <table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Image</th>
+            <th>Title</th>
+            <th>Status</th>
+            <th>Allow Comments</th>
+            <th>Category</th>
+            <th>Date</th>
+            <th>Edit Post</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each post}}
+        <tr>
+            <td>{{_id}}</td>
+            {{#if image}}
+                <td><img src="/uploads/{{image}}"alt="image"  width="100"></td>
+            {{else}}
+                <td>(no image)</td>
+            {{/if}}
+            <td>{{title}}</td>
+            
+            <td>{{status}}</td>
+            <td>{{allowComments}}</td>
+            <td>{{category.name}}</td>
+            <td><a href="/post/{{slug}}">View</a></td>
+            <td>{{formatDate date 'MMMM Do YYYY'}}</td>
+            <td><a href="/admin/posts/edit/{{_id}}">
+                <button class="btn btn-primary">Edit</button>
+                </a>
+            </td>
+            <td>
+                <form action="/admin/posts/{{_id}}?_method=DELETE" method="post">
+            
+                    <button type="submit" class="btn btn-danger">Delete</button>     
+                </form>
+            </td>        
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+</div>

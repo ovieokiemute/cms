@@ -1,0 +1,30 @@
+<div class="col">
+    <table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Author</th>
+            <th>Image</th>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each post}}
+        <tr>
+                <td>{{owner.firstName}} {{owner.lastName}}</td>
+                {{#if image}}
+                    <td><img src="/uploads/{{image}}"alt="image"  width="100"></td>
+                {{else}}
+                    <td>(no image)</td>
+                {{/if}}
+                <td>{{title}}</td>
+                <td>{{category.name}}</td>
+                <td><a href="/post/{{slug}}">View</a></td>
+                <td>{{formatDate date 'MMMM Do YYYY'}}</td>
+            
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+</div>
